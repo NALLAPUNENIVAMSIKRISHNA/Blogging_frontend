@@ -12,7 +12,7 @@ const MyPosts = () => {
   useEffect(() => {
     const fetchMyPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/posts/my-posts', {
+        const response = await axios.get(`${process.env.API_URL}/api/posts/my-posts`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setPosts(response.data);
@@ -26,7 +26,7 @@ const MyPosts = () => {
 
   const handleCreatePost = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/posts', { title, content }, {
+      const response = await axios.post(`${process.env.API_URL}/api/posts`, { title, content }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPosts([...posts, response.data]);
@@ -39,7 +39,7 @@ const MyPosts = () => {
 
   const handleUpdatePost = async () => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/posts/${currentPostId}`, { title, content }, {
+      const response = await axios.put(`${process.env.API_URL}/api/posts/${currentPostId}`, { title, content }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPosts(posts.map(post => post._id === currentPostId ? response.data : post));
@@ -53,7 +53,7 @@ const MyPosts = () => {
 
   const handleDeletePost = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${id}`, {
+      await axios.delete(`${process.env.API_URL}/api/posts/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPosts(posts.filter(post => post._id !== id));

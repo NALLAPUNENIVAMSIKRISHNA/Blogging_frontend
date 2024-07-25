@@ -23,7 +23,7 @@ const Posts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/posts', {
+        const response = await axios.get(`${process.env.API_URL}/api/posts`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setPosts(response.data);
