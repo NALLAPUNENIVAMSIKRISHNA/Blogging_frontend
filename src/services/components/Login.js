@@ -1,5 +1,3 @@
-// src/components/Login.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -13,7 +11,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.API_URL}/api/auth/login`, { username, password });
+      const response = await axios.post(`https://blogging-backend-0e73.onrender.com/api/auth/login`, { username, password });
       localStorage.setItem('token', response.data.token);
       navigate('/posts');
     } catch (error) {

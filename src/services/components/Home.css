@@ -1,40 +1,37 @@
-/* src/components/Home.css */
-
+/* Home.css */
 .home-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   text-align: center;
-  padding: 20px;
+  padding: 50px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
 }
 
 .home-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
   max-width: 800px;
-  margin-top: 20px;
+  margin: auto;
 }
 
 .home-image img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  border-radius: 10px;
+}
+
+.home-buttons {
+  margin-top: 20px;
 }
 
 .home-buttons .btn {
   padding: 10px 20px;
-  margin: 5px;
-  text-decoration: none;
+  margin: 10px;
+  background-color: #008CBA;
   color: white;
-  background-color: #007BFF;
-  border: none;
+  text-decoration: none;
   border-radius: 5px;
-  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s;
 }
 
 .home-buttons .btn:hover {
-  background-color: #0056b3;
+  background-color: #005f75;
 }

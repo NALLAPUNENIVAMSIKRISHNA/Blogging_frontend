@@ -10,7 +10,7 @@ const Comments = ({ postId }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`${process.env.API_URL}/api/comments?post_id=${postId}`);
+        const response = await axios.get(`https://blogging-backend-0e73.onrender.com/api/comments?post_id=${postId}`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
@@ -22,7 +22,7 @@ const Comments = ({ postId }) => {
 
   const handleCreateComment = async () => {
     try {
-      const response = await axios.post(`${process.env.API_URL}/api/comments`, { post_id: postId, content: newComment }, {
+      const response = await axios.post(`https://blogging-backend-0e73.onrender.com/api/comments`, { post_id: postId, content: newComment }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setComments([...comments, response.data]);
@@ -34,7 +34,7 @@ const Comments = ({ postId }) => {
 
   const handleUpdateComment = async (id, updatedContent) => {
     try {
-      const response = await axios.put(`${process.env.API_URL}/api/comments/${id}`, { content: updatedContent }, {
+      const response = await axios.put(`https://blogging-backend-0e73.onrender.com/api/comments/${id}`, { content: updatedContent }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setComments(comments.map(comment => comment._id === id ? response.data : comment));
@@ -45,7 +45,7 @@ const Comments = ({ postId }) => {
 
   const handleDeleteComment = async (id) => {
     try {
-      await axios.delete(`${process.env.API_URL}/api/comments/${id}`, {
+      await axios.delete(`https://blogging-backend-0e73.onrender.com/api/comments/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setComments(comments.filter(comment => comment._id !== id));

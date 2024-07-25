@@ -1,5 +1,3 @@
-// src/components/Register.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -14,11 +12,10 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.API_URL}/api/auth/register`, { username, password, email });
-      alert('Registration successful!');
+      await axios.post(`https://blogging-backend-0e73.onrender.com/api/auth/register`, { username, password, email });
       navigate('/login');
     } catch (error) {
-      console.error('There was an error registering!', error);
+      console.error('Error registering:', error);
       alert('Registration failed.');
     }
   };
